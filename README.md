@@ -67,7 +67,7 @@ A Java-based application that provides a comprehensive platform for managing stu
 
 This project is open source. Feel free to use, modify, and distribute it as per the licensing terms.
 
-##Contact
-For any questions, feel free to reach out:
-GitHub: SumitBana
+## Contact
+For any questions, feel free to reach out: <br>
+GitHub: SumitBana <br>
 Email: sumitworks1508@example.com
