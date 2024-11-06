@@ -166,7 +166,7 @@ public class ViewDetailByStudent extends JDialog
             btnReturn = makeButton("Return",308,470,120,30);
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con  = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             pst = con.prepareStatement("SELECT NAME,FATHER_NAME,GENDER,ADDRESS,DOB,PHONE,EMAIL,COURSE,SEMESTERS FROM STUDENT_MASTER WHERE STUDENT_ID = ?");
             search(System.getProperty("student_id"));
         }

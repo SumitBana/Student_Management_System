@@ -170,7 +170,7 @@ public class ViewGradeByStudent extends JDialog
             btnReturn = makeButton("Return",  308,423,120,30);
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             PreparedStatement pst1 = con.prepareStatement("SELECT NAME,COURSE FROM STUDENT_MASTER WHERE STUDENT_ID = ?");
             PreparedStatement pst2 = con.prepareStatement("SELECT SEMESTER, GRADE FROM STUDENT_GRADE WHERE STUDENT_ID = ?");
             String sid = System.getProperty("student_id");

@@ -213,7 +213,7 @@ public class GradeAssign extends JDialog
             btnReturn   = makeButton("Return",365,190,100,30);
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             pst1 = con.prepareStatement("SELECT NAME,COURSE FROM STUDENT_MASTER WHERE STUDENT_ID = ?");
             pst2 = con.prepareStatement("SELECT NAME,COURSE,SEMESTER,GRADE FROM STUDENT_MASTER AS SM,STUDENT_GRADE AS SG WHERE SM.STUDENT_ID = ? AND SG.SEMESTER = ? AND SM.STUDENT_ID = SG.STUDENT_ID");
             pst3 = con.prepareStatement("INSERT INTO STUDENT_GRADE VALUES(?,?,?)");

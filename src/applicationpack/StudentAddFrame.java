@@ -206,7 +206,7 @@ public class StudentAddFrame extends JDialog
             setReset();
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             pst1 = con.prepareStatement("INSERT INTO STUDENT_MASTER VALUES(?,?,?,?,?,?,?,?,?,?)");
             pst2 = con.prepareStatement("INSERT INTO USER VALUES(?,?,?)");
             Statement sst = con.createStatement();

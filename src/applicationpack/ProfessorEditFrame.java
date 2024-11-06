@@ -235,7 +235,7 @@ public class ProfessorEditFrame extends JDialog
             setReset();
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con  = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             pst1 = con.prepareStatement("SELECT NAME,ADDRESS,GENDER,PHONE,EMAIL,DOB,DOJ FROM PROFESSOR_MASTER WHERE PROFESSOR_ID = ?");
             pst2 = con.prepareStatement("SELECT DEGREE FROM PROFESSOR_DEGREE WHERE PROFESSOR_ID = ?");
             pst3 = con.prepareStatement("UPDATE PROFESSOR_MASTER SET NAME = ?,ADDRESS = ?,GENDER = ?,PHONE = ?,EMAIL = ?,DOB = ?,DOJ = ? WHERE PROFESSOR_ID = ?");

@@ -88,7 +88,7 @@ public class StudentSnapshot extends JDialog
             super.add(spnStuDetail);
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             Statement sst = con.createStatement();
             ResultSet rst = sst.executeQuery("SELECT SM.STUDENT_ID,NAME,COURSE,SEMESTER,GRADE FROM STUDENT_MASTER AS SM,STUDENT_GRADE AS SG WHERE SM.STUDENT_ID=SG.STUDENT_ID ORDER BY SM.STUDENT_ID,SEMESTER");
             while(rst.next())

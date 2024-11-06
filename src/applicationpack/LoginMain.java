@@ -133,7 +133,7 @@ class LoginFrame extends JFrame
                         else
                         {
                             Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+                            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
                             PreparedStatement pst = con.prepareStatement("SELECT USERID,PASSWORD,ROLE FROM USER WHERE USERID = ? AND PASSWORD = ? AND ROLE = ?");
                             pst.setString(1, txtUid.getText());
                             pst.setString(2, txtPwd.getText());
@@ -239,25 +239,25 @@ public class LoginMain
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
 //            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
-            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             DatabaseMetaData metadata = con.getMetaData();
-            ResultSet result = metadata.getTables("ankan", "root", "USER", new String[]{"TABLE"});
+            ResultSet result = metadata.getTables("project2024","root","USER",new String[]{"TABLE"});
             Statement sst = con.createStatement();
             if(!result.next())
             {
-                String sql = "";
-                sql = "CREATE TABLE USER(USERID VARCHAR(20) PRIMARY KEY,PASSWORD VARCHAR(20),ROLE VARCHAR(9))";
+                String sql = "CREATE TABLE USER(USERID VARCHAR(20) PRIMARY KEY,PASSWORD VARCHAR(20),ROLE VARCHAR(9))";
                 sst.executeUpdate(sql);
                 sql = "INSERT INTO USER VALUES('admin','admin','Admin')";
                 sst.executeUpdate(sql);
-                sql = "CREATE TABLE STUDENT_MASTER(STUDENT_ID VARCHAR(15) PRIMARY KEY,NAME VARCHAR(20),FATHER_NAME VARCHAR(20),GENDER VARCHAR(6),ADDRESS VARCHAR(50),DOB DATE,PHONE VARCHAR(12),EMAIL VARCHAR(30),COURSE VARCHAR(5),SEMESTERS CHAR(1))";
+                sql = "CREATE TABLE STUDENT_MASTER(STUDENT_ID VARCHAR(15) PRIMARY KEY, NAME VARCHAR(20),FATHER_NAME VARCHAR(20),GENDER VARCHAR(6),ADDRESS VARCHAR(50),DOB DATE,PHONE VARCHAR(12),EMAIL VARCHAR(30),COURSE VARCHAR(5),SEMESTERS CHAR(1))";
                 sst.executeUpdate(sql);
                 sql = "CREATE TABLE PROFESSOR_MASTER(PROFESSOR_ID VARCHAR(13) PRIMARY KEY,NAME VARCHAR(20),ADDRESS VARCHAR(50),GENDER VARCHAR(6),PHONE VARCHAR(12),EMAIL VARCHAR(30),DOB DATE,DOJ DATE)";
                 sst.executeUpdate(sql);
-                sql = "CREATE TABLE PROFESSOR_DEGREE(PROFESSOR_ID VARCHAR(13),DEGREE VARCHAR(10),PRIMARY KEY (PROFESSOR_ID,DEGREE),FOREIGN KEY (PROFESSOR_ID) REFERENCES PROFESSOR_MASTER(PROFESSOR_ID) ON DELETE CASCADE)";
+                sql = "CREATE TABLE PROFESSOR_DEGREE(PROFESSOR_ID VARCHAR(13),DEGREE VARCHAR(10),PRIMARY KEY (PROFESSOR_ID,DEGREE), FOREIGN KEY(PROFESSOR_ID) REFERENCES PROFESSOR_MASTER(PROFESSOR_ID)ON DELETE CASCADE)";
                 sst.executeUpdate(sql);
-                sql = "CREATE TABLE STUDENT_GRADE(STUDENT_ID VARCHAR(15),SEMESTER CHAR(1),GRADE CHAR(1),PRIMARY KEY(STUDENT_ID,SEMESTER),FOREIGN KEY (STUDENT_ID) REFERENCES STUDENT_MASTER(STUDENT_ID) ON DELETE CASCADE)";
+                sql = "CREATE TABLE STUDENT_GRADE(STUDENT_ID VARCHAR(15),SEMESTER CHAR(1), GRADE CHAR(1), PRIMARY KEY(STUDENT_ID,SEMESTER),FOREIGN KEY(STUDENT_ID) REFERENCES STUDENT_MASTER(STUDENT_ID) ON DELETE CASCADE)";
                 sst.executeUpdate(sql);
+                
             }
             con.close();
         

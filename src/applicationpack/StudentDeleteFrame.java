@@ -208,7 +208,7 @@ public class StudentDeleteFrame extends JDialog
             btnReturn = makeButton("Return",365,470,100,30);
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con  = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
             pst1 = con.prepareStatement("SELECT NAME,FATHER_NAME,GENDER,ADDRESS,DOB,PHONE,EMAIL,COURSE,SEMESTERS FROM STUDENT_MASTER WHERE STUDENT_ID = ?");
             pst2 = con.prepareStatement("DELETE FROM STUDENT_MASTER WHERE STUDENT_ID = ?");
         }

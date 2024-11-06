@@ -97,7 +97,7 @@ public class SignupFrame extends JDialog
                         else
                         {
                             Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankan?autoReconnect=true&useSSL=false","root","chinmoy");
+                            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/project2024","root","150800");
                             String sql = "SELECT USERID FROM USER WHERE USERID = ?";
                             PreparedStatement pst1 = con.prepareStatement(sql);
                             pst1.setString(1, txtUid.getText());
